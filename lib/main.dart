@@ -1,6 +1,7 @@
-import 'package:my_app/page1.dart';
-import 'package:my_app/page2.dart';
-import 'package:my_app/page3.dart';
+
+import 'package:ay_app/page1.dart';
+import 'package:ay_app/page2.dart';
+import 'package:ay_app/page3.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 

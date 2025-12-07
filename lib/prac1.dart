@@ -1,9 +1,6 @@
-import 'package:my_app/home_page.dart';
-import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import 'package:ay_app/ecom/ecom2.dart';
+import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,9 +9,46 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      darkTheme: ThemeData(primarySwatch: Colors.green),
-      home: Youtube(),
+
+      // Light Theme
+      theme: ThemeData(
+        primarySwatch: Colors.deepOrange,
+        scaffoldBackgroundColor: Colors.deepOrange.shade50,
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontSize: 30, color: Colors.black),
+        ),
+      ),
+
+      // Dark Theme
+      darkTheme: ThemeData(
+        primarySwatch: Colors.green,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 80, 208, 88),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontSize: 30, color: Colors.white),
+        ),
+      ),
+
+      themeMode: ThemeMode.system,
+      home: MyApp2(),
+    );
+  }
+}
+
+class Test extends StatelessWidget {
+  const Test({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Theme Test")),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        color: Colors.blue,
+        child: Center(
+          child: Text("ABC", style: Theme.of(context).textTheme.bodyLarge),
+        ),
+      ),
     );
   }
 }
@@ -571,38 +605,72 @@ class Practice3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Column(
-          children: [
-            Container(
-              height: 100.0,
-              width: double.infinity,
-              color: Colors.blueAccent,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  height: 100.0,
+                  width: double.infinity,
+                  color: Colors.blueAccent,
+                ),
+                Container(
+                  height: 200.0,
+                  width: double.infinity,
+                  color: Colors.redAccent,
+                ),
+                Container(
+                  height: 200.0,
+                  width: double.infinity,
+                  color: Colors.green,
+                ),
+                Text(
+                  "Hello",
+                  style: TextStyle(
+                    color: Colors.cyan,
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+
+                Container(
+                  height: 100.0,
+                  width: double.infinity,
+                  color: Colors.blueAccent,
+                ),
+                IconButton(
+                  onPressed: () {
+                    print("object");
+                  },
+                  icon: Icon(Icons.add_to_drive),
+                ),
+                Container(
+                  height: 200.0,
+                  width: double.infinity,
+                  color: Colors.redAccent,
+                ),
+                Container(
+                  height: 200.0,
+                  width: double.infinity,
+                  color: Colors.green,
+                ),
+                Text(
+                  "Hello",
+                  style: TextStyle(
+                    color: Colors.cyan,
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    print("object");
+                  },
+                  icon: Icon(Icons.add_to_drive),
+                ),
+              ],
             ),
-            Container(
-              height: 200.0,
-              width: double.infinity,
-              color: Colors.redAccent,
-            ),
-            Container(
-              height: 200.0,
-              width: double.infinity,
-              color: Colors.green,
-            ),
-            Text(
-              "Hello",
-              style: TextStyle(
-                color: Colors.cyan,
-                fontSize: 40.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                print("object");
-              },
-              icon: Icon(Icons.add_to_drive),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -610,45 +678,64 @@ class Practice3 extends StatelessWidget {
 }
 
 //Row
-class Practice4 extends StatelessWidget {
-  const Practice4({super.key});
+class Practice4_ extends StatelessWidget {
+  const Practice4_({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Row(
-          children: [
-            Expanded(
-              flex: 3,
-              child: Container(
-                height: double.infinity,
-                width: 300.0,
-                color: Colors.blueAccent,
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Container(
-                width: 300.0,
-                height: double.infinity,
-                color: Colors.redAccent,
-              ),
-            ),
-            Expanded(
-              child: Container(
-                width: 300.0,
-                height: double.infinity,
-                color: Colors.green,
-              ),
-            ),
-          ],
+        backgroundColor: Colors.lightGreenAccent,
+        appBar: AppBar(
+          title: const Text("SafeArea Example"),
+          backgroundColor: Colors.blueAccent,
+        ),
+        body: SafeArea(
+          child: Row(
+            children: [
+              Expanded(flex: 4, child: Container(color: Colors.redAccent)),
+              Expanded(flex: 2, child: Container(color: Colors.greenAccent)),
+              Expanded(flex: 1, child: Container(color: Colors.orangeAccent)),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
+class Practice4 extends StatelessWidget {
+  const Practice4({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("SafeArea Example"),
+          backgroundColor: Colors.blueAccent,
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(color: Colors.redAccent, width: 100.00),
+                Container(color: Colors.greenAccent, width: 100.00),
+                Container(color: Colors.orangeAccent, width: 100.00),
+                Container(color: Colors.redAccent, width: 100.00),
+                Container(color: Colors.greenAccent, width: 100.00),
+                Container(color: Colors.orangeAccent, width: 100.00),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 //Another design with Main method;
 
 //main
@@ -1205,6 +1292,10 @@ class Practice13a extends StatelessWidget {
       ),
     );
   }
+}
+
+void main() {
+  runApp(PracticeN7());
 }
 
 class PracticeN7 extends StatelessWidget {
